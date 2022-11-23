@@ -38,7 +38,7 @@ export const shazamCoreApi = createApi({
     // we build all of the end points of api that we want call:
     getTopCharts: builder.query({
       // query: to fetch data:
-      query: "/charts/world",
+      query: () => "/charts/world",
     }),
   }),
 });
