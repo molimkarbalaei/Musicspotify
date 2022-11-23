@@ -1,7 +1,12 @@
-import React from 'react';
+//after adding isFetching and error we have to add loader and error components:
+import React from "react";
 
 const Error = () => (
-  <div>Error</div>
+  <div className="w-full flex justify-center items-center">
+    <h1 className="font-bold text-2xl text-white mt-2">
+      'Opps! Something went wrong'
+    </h1>
+  </div>
 );
 
 export default Error;
