@@ -5,13 +5,27 @@ import { useDispatch } from "react-redux";
 import PlayPause from "./PlayPause";
 import { playPause, setActiveSong } from "../redux/features/playerSlice";
 
+//IMPORTANT:
+// cake -> selectors(pieces)
+// dispatch -> we can change the state
+// dispatch (add chocolate to the powder)   --> verbes of doing something
+// dispatch (add chocolate dressing)        --> verbes of doing something
+
 // we pass index and key as props:
 
 const SongCard = ({ i, song, isPlaying, activeSong, data }) => {
-  // create the handlePlayPause function:
-  const handlePauseClick = () => {};
+  const dispatch = useDispatch();
+  // create the handlePlayPause function: in playPause.jsx
+  const handlePauseClick = () => {
+    // we use dispatch to call the action:
+    dispatch(playPause(false));
+  };
   // create the handlePlayClick function:
-  const handlePlayClick = () => {};
+  const handlePlayClick = () => {
+    // we use dispatch to call the action:
+    dispatch(setActiveSong({ song, data, i }));
+    dispatch(playPause(true));
+  };
 
   // which song is currently active: => go to  discover page
 
