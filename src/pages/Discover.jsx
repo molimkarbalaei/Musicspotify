@@ -3,8 +3,16 @@ import { Error, Loader, SongCard } from "../components";
 import { genres } from "../assets/constants";
 //3- after adding the API: (shazamCore)
 import { useGetTopChartsQuery } from "../redux/services/shazamCore";
+// 5- which song is currently active:
+import { useSelector, useDispatch } from "react-redux";
 
 const Discover = () => {
+  // 5- which song is currently active: we use this hooks:
+  const dispatch = useDispatch();
+  // To use specific data from the store, we use the useSelector hook: cake
+  //cake => cake.vanila
+  const { activeSong, isPlaying } = useSelector((state) => state.player);
+
   // we can call it(useGetTopChartsQuery => api) like other hooks:
   // we get back 3 different things:
   // a- data: the data we get back from the api => result of api call
@@ -49,6 +57,9 @@ const Discover = () => {
           <SongCard
             key={song.key}
             song={song}
+            isPlaying={isPlaying}
+            activeSong={activeSong}
+            data={data}
             // specific index:
             i={i}
           />
