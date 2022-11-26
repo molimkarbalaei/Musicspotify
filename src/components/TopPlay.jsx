@@ -60,10 +60,12 @@ const TopPlay = () => {
       className="xl:ml-6 ml-0 xl:mb-0 mb-6 flex-1 xl:max-w-full flex flex-col"
     >
       <div className="w-full flex flex-col">
+        {/* //todo: Top Charts: */}
         <div className="flex flex-row items-center justify-between">
           <h2 className="text-white font-bold text-2xl">Top Charts</h2>
-          <Link to="/top-charts"></Link>
-          <p className="text-gray-300 text-base cursor-pointer">See More</p>
+          <Link to="/top-charts">
+            <p className="text-gray-300 text-base cursor-pointer">See More</p>
+          </Link>
         </div>
         <div className="mt-4 flex flex-col gap-4">
           {/* we need to map through the topPlays: */}
@@ -71,6 +73,43 @@ const TopPlay = () => {
             <TopChartCard song={song} i={i} key={song.key} />
           ))}
         </div>
+      </div>
+      {/* //todo: Top artists: */}
+      <div className="w-full flex flex-col mt-8">
+        <div className="flex flex-row items-center justify-between">
+          <h2 className="text-white font-bold text-2xl">Top Artist</h2>
+          <Link to="/top-artists">
+            <p className="text-gray-300 text-base cursor-pointer">See More</p>
+          </Link>
+        </div>
+        {/* // swiper: */}
+        <Swiper
+          slidesPerView="auto"
+          spaceBetween={15}
+          freeMode
+          centeredSlides
+          centeredSlidesBounds
+          modules={[FreeMode]}
+          className="mt-4"
+        >
+          {/* // we need to map through the topPlays: */}
+          {/* {topPlays?.slice(0, 5).map((artist) => ( */}
+          {topPlays?.map((artist, i) => (
+            <SwiperSlide
+              key={artist?.key}
+              style={{ width: "25%", height: "auto" }}
+              className="shadow-lg rounded-full animate-slideright"
+            >
+              <Link to={`/artist/${artist?.artists[0].adamid}`}>
+                <img
+                  src={artist?.images.background}
+                  alt="name"
+                  className="w-full rounded-full object-cover"
+                />
+              </Link>
+            </SwiperSlide>
+          ))}
+        </Swiper>
       </div>
     </div>
   );
