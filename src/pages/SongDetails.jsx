@@ -37,6 +37,8 @@ const SongDetails = () => {
           )}
         </div>
       </div>
+      {/* // todo: add related songs: */}
+      <RelatedSongs />
     </div>
   );
 };
