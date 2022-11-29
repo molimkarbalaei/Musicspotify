@@ -13,7 +13,7 @@ import { useGetSongRelatedQuery } from "../redux/services/shazamCore";
 const SongDetails = () => {
   const dispatch = useDispatch();
   // base on path="/songs/:songid"
-  const { songid } = useParams();
+  const { songid, id: artistId } = useParams();
   // pull the data from the state:
   const { activeSong, isPlaying } = useSelector((state) => state.player);
   // use the query:
@@ -26,7 +26,7 @@ const SongDetails = () => {
   } = useGetSongRelatedQuery({ songid });
 
   //! add loading and error handler:(related songs)
-  if (isFetchingSongDetails || isFetchingRelatedSongs)
+  if (isFetchingSongDetails && isFetchingRelatedSongs)
     return <Loader title="Searching song details" />;
 
   if (error) return <Error />;
@@ -63,6 +63,7 @@ const SongDetails = () => {
       {/* // todo: add related songs: */}
       <RelatedSongs
         data={data}
+        artistId={artistId}
         activeSong={activeSong}
         isPlaying={isPlaying}
         handlePlayClick={handlePlayClick}
