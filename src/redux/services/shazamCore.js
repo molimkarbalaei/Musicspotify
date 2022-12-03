@@ -63,11 +63,12 @@ export const shazamCoreApi = createApi({
     }),
     // get song based on search:
     getSongsBySearch: builder.query({
-      query: (search) => `/search?term=${search}`,
+      query: (searchTerm) =>
+        `/multi?search_type=SONGS_ARTISTS&query=${searchTerm}`,
     }),
   }),
 });
-
+// export as a hook
 export const {
   useGetTopChartsQuery,
   useGetSongDetailsQuery,
@@ -75,4 +76,5 @@ export const {
   useGetArtistDetailsQuery,
   useGetSongsByCountryQuery,
   useGetSongsByGenreQuery,
+  useGetSongsBySearchQuery,
 } = shazamCoreApi;
