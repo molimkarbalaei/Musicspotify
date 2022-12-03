@@ -92,7 +92,7 @@ const TopPlay = () => {
       <div className="w-full flex flex-col">
         {/* //todo: Top Charts: */}
         <div className="flex flex-row items-center justify-between">
-          <h2 className="text-white font-bold text-2xl">Top Charts</h2>
+          <h2 className="text-white font-bold text-2xl">Top Charts </h2>
           <Link to="/top-charts">
             <p className="text-gray-300 text-base cursor-pointer">See More</p>
           </Link>

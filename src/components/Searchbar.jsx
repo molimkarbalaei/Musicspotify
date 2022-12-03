@@ -7,6 +7,7 @@ const Searchbar = () => {
   //initall useNavigate hook: (later we added this)
   const navigate = useNavigate();
   const [searchTerm, setSearchTerm] = useState("");
+  // search term mire be search.jsx ezafe mikonim:
 
   const handleSubmit = (e) => {
     e.preventDefault();
